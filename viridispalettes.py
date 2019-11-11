@@ -47,7 +47,7 @@ AUTHOR
     Shyam Saladi
     Github: @smsaladi
 
-LICENSE
+LICENSE (MIT)
 
 Copyright (c) 2019 Shyam Saladi
 

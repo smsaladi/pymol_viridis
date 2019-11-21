@@ -102,11 +102,11 @@ def viridis(*args, **kwargs):
     cmd.spectrum(*args, **kwargs)
 cmd.extend(viridis)
 
-def format_colors(values):
-    return ' '.join(values).replace('#', '0x')
 
 def add_palettes():
     '''Add the color blind-friendly colormaps/palettes to PyMOL.'''
+    def format_colors(values):
+        return ' '.join(values).replace('#', '0x')
 
     for pal_name, values in NEW_PALETTES.items():
         pymol.viewing.palette_colors_dict[pal_name] = format_colors(values)

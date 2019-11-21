@@ -23,6 +23,9 @@ DESCRIPTION
                     https://doi.org/10.1371/journal.pone.0199239
         - turbo: Anton Mikhailov.
                 https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html
+    
+    Pymol script colorblindfriendly.py by @jaredsampson used as reference for modifying menus:
+        https://github.com/Pymol-Scripts/Pymol-script-repo/blob/master/colorblindfriendly.py
 
 USAGE
 

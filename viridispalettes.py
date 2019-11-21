@@ -1,31 +1,28 @@
 '''
-More information and examples can be found at:
-shyam.saladi.org/viridispalettes
+For further detail/future revisions, visit 
+https://shyam.saladi.org/pymol_viridis
 
 DESCRIPTION
+    Makes perceptually uniform and colorblind accessible color palettes
+    available in PyMOL
 
     Certain colors are indistinguishable to people with the various forms of
     color blindness, and therefore are better not used in figures intended for
-    public viewing.
+    public viewing. This script provides additional color palettes to allow for
+    an alternative to the default rainbow coloring that is unambiguous both to
+    colorblind and non-colorblind people.
 
-    This script provides alternative menu options with the viridis colormap
-    to allow for an alternative to rainbow coloring for PyMOL that is
-    unambiguous both to colorblind and non-colorblind people.
+    By running this script,
+        * default color palette for `spectrum` is changed to turbo
+        * viridis options are added to menus.
 
-    * Changes spectrum colors to Turbo
-    * Adds Viridis to menu
-
-    The viridis and the other new colormaps defined here have been developed by
-    Stéfan van der Walt, Nathaniel Smith, and Eric Firing:
-    https://bids.github.io/colormap.
-
-    The palettes are:
-
-        * viridis
-        * magma
-        * inferno
-        * plasma
-        * cividis (Nuñez, Anderton, Renslow, doi:10.1371/journal.pone.0199239)
+    Color scale details:
+        - viridis, magma, inferno, plasma: Stéfan van der Walt, Nathaniel Smith,
+            & Eric Firing. https://bids.github.io/colormap
+        - cividis: Jamie Nuñez, Christopher Anderton, Ryan Renslow.
+                    https://doi.org/10.1371/journal.pone.0199239
+        - turbo: Anton Mikhailov.
+                https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html
 
 USAGE
 
@@ -70,8 +67,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-Palettes RGB values and related code is taken from bokeh.palettes.
-Corresponding copyrights can be found here:
+Palette RGB values is taken from bokeh.palettes.
+Corresponding copyrights notices can be found here:
 https://github.com/bokeh/bokeh/blob/b19f2c5547024bdc288d02e73fdb65e65991df5f/bokeh/palettes.py
 
 '''

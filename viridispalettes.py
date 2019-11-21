@@ -257,11 +257,9 @@ def add_menus():
 
 '''Help with generating colorized text for menus
 
-Need to find the color indicies among existing colors less than 999
-since to colorize we have to use \\NNN
-
-Initially used this to map from hex colors to values, but hardcoded below
-in case numpy is not installed
+\\RGB represents colors in 'decimal' format, i.e. 0-9 for R, 0-9 for G, 0-9 for B.
+This function converts 16-bit hex colors `#RRGGBB` into this format. It was initially
+used, but for efficency the \\RGB values are hard coded below
 '''
 def convert_hex_colors(colors):
     colors_idx = []
@@ -269,17 +267,18 @@ def convert_hex_colors(colors):
         chex = chex[1:]
         rgb = cmd.get_color_tuple('0x' + chex)
         rgb = [str(int(v * 9)) for v in rgb]
-        rgb = "".join(rgb)
+        rgb = ''.join(rgb)
         colors_idx.append(rgb)
 
     return colors_idx
 
 # last 8 for viridis10 (first two are too dark -- hard to see text on black background)
-viridis7 = ['#3E4989', '#30678D', '#25828E', '#1E9C89', '#35B778', '#6BCD59', '#B2DD2C', '#FDE724']
-viridis7_rgb = convert_hex_colors(viridis7) # ['224', '134', '145', '154', '164', '373', '671', '881']
-def colorize_text(text, palette=tuple(viridis7_rgb)):
-    """"Colorizes text given a list of pymol color indicies
-    """
+viridis8 = ['#3E4989', '#30678D', '#25828E', '#1E9C89', '#35B778', '#6BCD59', '#B2DD2C', '#FDE724']
+viridis8_rgb = ['224', '134', '145', '154', '164', '373', '671', '881']
+
+def colorize_text(text, palette=tuple(viridis8_rgb)):
+    '''Colorizes text given a list of RGB color values (NNN format)
+    '''
     text = list(text)
     palette = list(palette)
     

@@ -83,15 +83,17 @@ from pymol import cmd
 '''Add/configure palettes used by `spectrum`
 '''
 
-# Monkey-patch spectrum to set the default palette to `turbo`
 def patch_spectrum():
+    '''Monkey-patches spectrum to set the default palette to `turbo`
+    '''
     spectrum_defaults = list(cmd.spectrum.__defaults__)
     spectrum_defaults[1] = 'turbo'
     cmd.spectrum.__defaults__ = tuple(spectrum_defaults)
     return
 
-# Add new command to color using viridis
 def viridis(*args, **kwargs):
+    '''New command to color using viridis
+    '''
     if len(args) >= 1:
         args = list(args)
         args[1] = 'viridis'
@@ -290,12 +292,11 @@ def colorize_text(text, palette=tuple(viridis8_rgb)):
             break
         text[i] = '\\%s%s' % (col, text[i])
 
-    return "".join(text) + '\\888'
+    return ''.join(text) + '\\888'
 
 '''The HEX values are from bokeh.palettes
 https://github.com/bokeh/bokeh/blob/b19f2c5547024bdc288d02e73fdb65e65991df5f/bokeh/palettes.py
 '''
-
 NEW_PALETTES = {
     'inferno': [
         '#000003', '#000004', '#000006', '#010007', '#010109', '#01010B', '#02010E', '#020210', '#030212', '#040314', '#040316', '#050418',

@@ -26,14 +26,14 @@ DESCRIPTION
 
 USAGE
 
-    import viridispalettes as vip
+    import viridispalettes
 
     # Add the new colors
-    vip.set_palettes()
+    viridispalettes.set_palettes()
     color myObject, cb_red <- what's the exmaples
 
     # Add menus item to the OpenGL GUI ([C] menu in the right panel)
-    vip.add_menu()
+    viridispalettes.add_menu()
 
 REQUIREMENTS
 

@@ -94,6 +94,14 @@ def patch_spectrum():
     cmd.spectrum.__defaults__ = tuple(spectrum_defaults)
     return
 
+def unpatch_spectrum():
+    '''Resets default color palette to `rainbow`
+    '''
+    spectrum_defaults = list(cmd.spectrum.__defaults__)
+    spectrum_defaults[1] = 'rainbow'
+    cmd.spectrum.__defaults__ = tuple(spectrum_defaults)
+    return
+
 def viridis(*args, **kwargs):
     '''New command to color using viridis
     '''

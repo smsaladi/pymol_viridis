@@ -40,7 +40,8 @@ USAGE
 
 REQUIREMENTS
 
-    The new menus (`add_menu()` function) require PyMOL 1.6.0 or later.
+    The new menus (`add_viridis_menus()` and `remove_viridis_menus()`)
+    require PyMOL 1.6.0 or later.
 
 AUTHOR
 
@@ -228,7 +229,7 @@ def _has_viridis_palettes():
             return False
     return True
 
-def add_menus():
+def add_viridis_menus():
     '''Add viridis options to the PyMOL OpenGL menus where spectrum options exist
     '''
 
@@ -263,6 +264,34 @@ def add_menus():
     pymol.menu.color_auto = _color_auto_patch
 
     pymol.menu.has_viridis_menus = True
+    print('Done!')
+
+    return
+
+def remove_viridis_menus():
+    '''Removes viridis options to the PyMOL OpenGL menus
+    '''
+
+    print('Changing default palette for spectrum back to `rainbow`')
+    unpatch_spectrum()
+
+    if not hasattr(pymol.menu, 'has_viridis_menus') or not pymol.menu.has_viridis_menus:
+        print('Palette menus are not present!')
+        return
+
+    # Abort if PyMOL is too old.
+    try:
+        from pymol.menu import all_colors_list
+    except ImportError:
+        print('PyMOL version too old for palettes menus. Requires 1.6.0 or later.')
+        return
+
+    print('Removing viridis from menus...')
+    pymol.menu.by_chain = pymol.menu._by_chain
+    pymol.menu.mol_color = pymol.menu._mol_color
+    pymol.menu.color_auto = pymol.menu._color_auto
+
+    pymol.menu.has_viridis_menus = False
     print('Done!')
 
     return
@@ -453,4 +482,4 @@ NEW_PALETTES = {
 
 
 if __name__ == 'pymol':
-    add_menus()
+    add_viridis_menus()

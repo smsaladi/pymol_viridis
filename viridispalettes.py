@@ -266,19 +266,16 @@ def add_menus():
 This function converts 16-bit hex colors `#RRGGBB` into this format. It was initially
 used, but for efficency the \\RGB values are hard coded below
 '''
-def convert_hex_colors(colors):
-    colors_idx = []
-    for i, chex in enumerate(colors):
-        chex = chex[1:]
-        rgb = cmd.get_color_tuple('0x' + chex)
-        rgb = [str(int(v * 9)) for v in rgb]
-        rgb = ''.join(rgb)
-        colors_idx.append(rgb)
-
-    return colors_idx
+def _convert_hex_color(color):
+    chex = chex[1:]
+    rgb = cmd.get_color_tuple('0x' + chex)
+    rgb = [str(int(v * 9)) for v in rgb]
+    rgb = ''.join(rgb)
+    return rgb
 
 # last 8 for viridis10 (first two are too dark -- hard to see text on black background)
 viridis8 = ['#3E4989', '#30678D', '#25828E', '#1E9C89', '#35B778', '#6BCD59', '#B2DD2C', '#FDE724']
+# viridis8_rgb = [_convert_hex_color(c) for c in viridis8]
 viridis8_rgb = ['224', '134', '145', '154', '164', '373', '671', '881']
 
 def colorize_text(text, palette=tuple(viridis8_rgb)):

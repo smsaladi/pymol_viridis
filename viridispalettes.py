@@ -232,12 +232,12 @@ def add_menus():
     '''Add viridis options to the PyMOL OpenGL menus where spectrum options exist
     '''
 
-    if hasattr(pymol.menu, 'has_viridis_menus') and ~pymol.menu.has_viridis_menus:
+    if hasattr(pymol.menu, 'has_viridis_menus') and pymol.menu.has_viridis_menus:
         print('Palette menus were already added!')
         return
 
     # Make sure palettes are installed.
-    if ~_has_viridis_palettes():
+    if not _has_viridis_palettes():
         print('Adding palettes...')
         add_palettes()
 

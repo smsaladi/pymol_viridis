@@ -136,8 +136,8 @@ Under `C` menu:
 
 '''
 
-def viridis_menu(self_cmd, sele):
-    viridis_col = colorize_text('viridis')
+def _viridis_menu(self_cmd, sele):
+    viridis_col = _colorize_text('viridis')
 
     r = [
         [2, 'Viridis:', ''],
@@ -171,10 +171,10 @@ def viridis_menu(self_cmd, sele):
     return r
 
 
-def by_chain_patch(self_cmd, sele):
-    by_chain_col = colorize_text('by chain')
-    by_segi_col = colorize_text('by segi ')
-    chainbows_col = colorize_text('chainbows')
+def _by_chain_patch(self_cmd, sele):
+    by_chain_col = _colorize_text('by chain')
+    by_segi_col = _colorize_text('by segi ')
+    chainbows_col = _colorize_text('chainbows')
     
     r = pymol.menu._by_chain(self_cmd, sele) + [
         [0, '', ''],
@@ -196,10 +196,10 @@ def by_chain_patch(self_cmd, sele):
         ]
     return r
 
-def color_auto_patch(self_cmd, sele):
-    by_obj_col = colorize_text('by obj')
-    by_obj_c_col = colorize_text('by obj(elem C)')
-    chainbows_col = colorize_text('chainbows')
+def _color_auto_patch(self_cmd, sele):
+    by_obj_col = _colorize_text('by obj')
+    by_obj_c_col = _colorize_text('by obj(elem C)')
+    chainbows_col = _colorize_text('chainbows')
     r = pymol.menu._color_auto(self_cmd, sele) + [
         [ 0, '', ''],
         [ 1, by_obj_col,
@@ -209,8 +209,8 @@ def color_auto_patch(self_cmd, sele):
         ]
     return r
 
-def mol_color_patch(self_cmd, sele):
-    viridis_col = colorize_text('viridis')
+def _mol_color_patch(self_cmd, sele):
+    viridis_col = _colorize_text('viridis')
     with pymol.menu.menucontext(self_cmd, sele):
         for i, item in enumerate(pymol.menu._mol_color(self_cmd, sele)):
             _, text, _ = item
@@ -219,10 +219,10 @@ def mol_color_patch(self_cmd, sele):
                 break
         
         r = pymol.menu._mol_color(self_cmd, sele)
-        r.insert(auto_menu_idx - 1, [1, viridis_col, viridis_menu(self_cmd, sele)])
+        r.insert(auto_menu_idx - 1, [1, viridis_col, _viridis_menu(self_cmd, sele)])
         return r
 
-def has_viridis_palettes():
+def _has_viridis_palettes():
     for k in NEW_PALETTES.keys():
         if k not in pymol.viewing.palette_colors_dict.keys():
             return False
@@ -237,7 +237,7 @@ def add_menus():
         return
 
     # Make sure palettes are installed.
-    if ~has_viridis_palettes():
+    if ~_has_viridis_palettes():
         print('Adding palettes...')
         add_palettes()
 
@@ -258,9 +258,9 @@ def add_menus():
 
     # Add the menu
     print('Adding viridis to menus...')
-    pymol.menu.by_chain = by_chain_patch
-    pymol.menu.mol_color = mol_color_patch
-    pymol.menu.color_auto = color_auto_patch
+    pymol.menu.by_chain = _by_chain_patch
+    pymol.menu.mol_color = _mol_color_patch
+    pymol.menu.color_auto = _color_auto_patch
 
     pymol.menu.has_viridis_menus = True
     print('Done!')
@@ -282,11 +282,11 @@ def _convert_hex_color(color):
     return rgb
 
 # last 8 for viridis10 (first two are too dark -- hard to see text on black background)
-viridis8 = ['#3E4989', '#30678D', '#25828E', '#1E9C89', '#35B778', '#6BCD59', '#B2DD2C', '#FDE724']
-# viridis8_rgb = [_convert_hex_color(c) for c in viridis8]
-viridis8_rgb = ['224', '134', '145', '154', '164', '373', '671', '881']
+# _viridis8 = ['#3E4989', '#30678D', '#25828E', '#1E9C89', '#35B778', '#6BCD59', '#B2DD2C', '#FDE724']
+# viridis8_rgb = [_convert_hex_color(c) for c in _viridis8]
+_viridis8_rgb = ['224', '134', '145', '154', '164', '373', '671', '881']
 
-def colorize_text(text, palette=tuple(viridis8_rgb)):
+def _colorize_text(text, palette=tuple(_viridis8_rgb)):
     '''Colorizes text given a list of RGB color values (NNN format)
     '''
     text = list(text)

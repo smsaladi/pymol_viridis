@@ -29,14 +29,9 @@ DESCRIPTION
 
 USAGE
 
-    import viridispalettes
-
-    # Add the new colors
-    viridispalettes.set_palettes()
-    color myObject, cb_red <- what's the exmaples
-
-    # Add menus item to the OpenGL GUI ([C] menu in the right panel)
-    viridispalettes.add_menu()
+    Simply run this script. 
+    To unpatch `spectrum` and remove viridis menus from graphical interface,
+    run `remove_viridis_menus()`.
 
 REQUIREMENTS
 
@@ -73,7 +68,7 @@ THE SOFTWARE.
 
 Palette RGB values is taken from bokeh.palettes.
 Corresponding copyrights notices can be found here:
-https://github.com/bokeh/bokeh/blob/b19f2c5547024bdc288d02e73fdb65e65991df5f/bokeh/palettes.py
+https://github.com/bokeh/bokeh/blob/b19f2c5/bokeh/palettes.py
 
 '''
 from __future__ import print_function, division

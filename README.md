@@ -1,5 +1,7 @@
-README
-======
+[![DOI](https://data.caltech.edu/badge/220768906.svg)](https://data.caltech.edu/badge/latestdoi/220768906)
+
+pymol_viridis
+=============
 
 Script to add viridis and other colorblind-accessible (and perceptually uniform)
 palettes to PyMOL and viridis to color (`C`) menus.

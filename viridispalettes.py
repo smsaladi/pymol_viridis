@@ -130,6 +130,9 @@ Under `C` menu:
         - Does this by monkey-patching the current menus
     Creates a new menu: `viridis` (like `spectrum`)
 
+Some parts adapted from
+https://github.com/schrodinger/pymol-open-source/blob/6ca016e82a5cf9febc064ee5a15ab505d51ec8c7/modules/pymol/menu.py
+
 '''
 
 def _viridis_menu(self_cmd, sele):

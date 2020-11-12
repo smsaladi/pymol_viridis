@@ -140,7 +140,7 @@ def _viridis_menu(self_cmd, sele):
         [1, viridis_col + '(elem C)',
             'cmd.spectrum("count", "viridis", selection="('+sele+') & elem C")'   ],
         [1, viridis_col + '(*/CA)'  ,
-            'cmd.spectrum("count", "viridis", selection="('+sele+')q")'     ],
+            'cmd.spectrum("count", "viridis", selection="('+sele+') & */CA")'     ],
         [1, viridis_col             ,
             'cmd.spectrum("count", "viridis", selection="'+sele+'", byres=1)'     ],
         [0, '', ''],
